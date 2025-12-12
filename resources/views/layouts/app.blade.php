@@ -84,6 +84,7 @@
     {{-- Scripts --}}
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script>
         AOS.init({ once: true });
     </script>

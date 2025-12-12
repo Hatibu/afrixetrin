@@ -23,7 +23,7 @@
         <div class="max-w-7xl mx-auto px-6 py-12">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-white">Ready to streamline your logistics?</h3>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white" style="color: #ffffff !important;">Ready to streamline your logistics?</h3>
                     <p class="text-white/90 mt-2">Get a free consultation and quote today.</p>
                 </div>
                 <a

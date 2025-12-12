@@ -14,11 +14,11 @@
     <div class="relative max-w-7xl mx-auto px-6 py-12 py-32">
         <div class="max-w-3xl" data-aos="fade-up">
             <span class="inline-flex items-center gap-2 bg-amber-500/20 text-amber-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <i class="ph-globe ph-bold"></i>
+                <i class="fas fa-globe"></i>
                 Trusted Logistics Partner Since 2003
             </span>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
-                Efficient Clearing & Forwarding for<br>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                <span class="text-white" style="color: #ffffff;">Efficient Clearing & Forwarding for</span><br>
                 <span class="text-amber-400">Global Trade</span>
             </h1>
             <p class="mt-6 text-xl text-gray-300 leading-relaxed max-w-2xl">
@@ -29,7 +29,7 @@
                 <a href="{{ route('quote') }}"
                    class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all group">
                     Request a Quote
-                    <i class="ph-arrow-right group-hover:translate-x-1 transition"></i>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
                 </a>
                 <a href="{{ route('contact') }}"
                    class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition">
@@ -83,7 +83,17 @@
                 <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
                      data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                     <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-500/5 flex items-center justify-center mb-6 group-hover:from-amber-500 group-hover:to-amber-600 transition-all">
-                        <i class="ph-{{ $service['icon'] }} ph-bold text-3xl text-amber-600 group-hover:text-white"></i>
+                        @if($service['icon'] === 'file-check')
+                            <i class="fas fa-clipboard-check text-3xl text-amber-600 group-hover:text-white"></i>
+                        @elseif($service['icon'] === 'ship')
+                            <i class="fas fa-ship text-3xl text-amber-600 group-hover:text-white"></i>
+                        @elseif($service['icon'] === 'warehouse')
+                            <i class="fas fa-warehouse text-3xl text-amber-600 group-hover:text-white"></i>
+                        @elseif($service['icon'] === 'shield-check')
+                            <i class="fas fa-shield-alt text-3xl text-amber-600 group-hover:text-white"></i>
+                        @elseif($service['icon'] === 'lightbulb')
+                            <i class="fas fa-lightbulb text-3xl text-amber-600 group-hover:text-white"></i>
+                        @endif
                     </div>
                     <h3 class="text-2xl font-bold text-[#0a1a3f] mb-3">{{ $service['title'] }}</h3>
                     <p class="text-gray-600 leading-relaxed">{{ $service['desc'] }}</p>
@@ -111,8 +121,8 @@
                             ['icon' => 'clock', 'title' => 'Fast Clearance', 'desc' => 'Expedited processing times'],
                             ['icon' => 'award', 'title' => 'Compliance Expertise', 'desc' => 'Full regulatory compliance'],
                             ['icon' => 'users', 'title' => 'Experienced Team', 'desc' => '20+ years in logistics'],
-                            ['icon' => 'currency-dollar', 'title' => 'Cost-Effective', 'desc' => 'Competitive pricing'],
-                            ['icon' => 'activity', 'title' => 'Real-Time Updates', 'desc' => 'Track your cargo 24/7'],
+                            ['icon' => 'dollar-sign', 'title' => 'Cost-Effective', 'desc' => 'Competitive pricing'],
+                            ['icon' => 'chart-line', 'title' => 'Real-Time Updates', 'desc' => 'Track your cargo 24/7'],
                             ['icon' => 'globe', 'title' => 'Global Network', 'desc' => 'Worldwide partnerships'],
                         ];
                     @endphp
@@ -120,7 +130,19 @@
                     @foreach($features as $index => $f)
                         <div class="flex items-start gap-4" data-aos="fade-up" data-aos-delay="{{ $index * 80 }}">
                             <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                                <i class="ph-{{ $f['icon'] }} ph-bold text-2xl text-amber-600"></i>
+                                @if($f['icon'] === 'clock')
+                                    <i class="fas fa-clock text-2xl text-amber-600"></i>
+                                @elseif($f['icon'] === 'award')
+                                    <i class="fas fa-award text-2xl text-amber-600"></i>
+                                @elseif($f['icon'] === 'users')
+                                    <i class="fas fa-users text-2xl text-amber-600"></i>
+                                @elseif($f['icon'] === 'dollar-sign')
+                                    <i class="fas fa-dollar-sign text-2xl text-amber-600"></i>
+                                @elseif($f['icon'] === 'chart-line')
+                                    <i class="fas fa-chart-line text-2xl text-amber-600"></i>
+                                @elseif($f['icon'] === 'globe')
+                                    <i class="fas fa-globe text-2xl text-amber-600"></i>
+                                @endif
                             </div>
                             <div>
                                 <h4 class="font-semibold text-[#0a1a3f]">{{ $f['title'] }}</h4>
@@ -170,7 +192,17 @@
                 @foreach($steps as $index => $step)
                     <div class="text-center relative" data-aos="fade-up" data-aos-delay="{{ $index * 150 }}">
                         <div class="relative z-10 w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/30">
-                            <i class="ph-{{ $step['icon'] }} ph-bold text-4xl text-white"></i>
+                            @if($step['icon'] === 'file-text')
+                                <i class="fas fa-file-alt text-4xl text-white"></i>
+                            @elseif($step['icon'] === 'check-circle')
+                                <i class="fas fa-check-circle text-4xl text-white"></i>
+                            @elseif($step['icon'] === 'ship')
+                                <i class="fas fa-ship text-4xl text-white"></i>
+                            @elseif($step['icon'] === 'warehouse')
+                                <i class="fas fa-warehouse text-4xl text-white"></i>
+                            @elseif($step['icon'] === 'truck')
+                                <i class="fas fa-truck text-4xl text-white"></i>
+                            @endif
                         </div>
                         <div class="absolute top-6 left-1/2 -translate-x-1/2 w-10 h-10 bg-[#0a1a3f] rounded-full flex items-center justify-center border-4 border-amber-500 text-white font-bold z-20">
                             {{ $index + 1 }}
@@ -205,10 +237,10 @@
             @foreach($testimonials as $index => $t)
                 <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 relative overflow-hidden"
                      data-aos="fade-up" data-aos-delay="{{ $index * 150 }}">
-                    <i class="ph-quotes absolute top-6 right-6 text-6xl text-amber-500/20"></i>
+                    <i class="fas fa-quote-right absolute top-6 right-6 text-6xl text-amber-500/20"></i>
                     <div class="flex gap-1 mb-4">
                         @for($i = 0; $i < $t['rating']; $i++)
-                            <i class="ph-star-fill text-amber-400 text-xl"></i>
+                            <i class="fas fa-star text-amber-400 text-xl"></i>
                         @endfor
                     </div>
                     <p class="text-gray-600 italic leading-relaxed">“{{ $t['quote'] }}”</p>
@@ -231,8 +263,8 @@
     </div>
 
     <div class="relative max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-            Ready to Optimize Your <span class="text-amber-400">Logistics?</span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold">
+            <span class="text-white" style="color: #ffffff;">Ready to Optimize Your </span><span class="text-amber-400">Logistics?</span>
         </h2>
         <p class="mt-6 text-xl text-gray-300">
             Get in touch with our experts today and discover how we can help streamline your supply chain.
@@ -241,7 +273,7 @@
             <a href="{{ route('quote') }}"
                class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:shadow-amber-500/30 transition-all group">
                 Get Your Free Quote
-                <i class="ph-arrow-right group-hover:translate-x-1 transition"></i>
+                <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
             </a>
             <a href="{{ route('contact') }}"
                class="inline-flex items-center gap-2 bg-white text-[#0a1a3f] px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl transition-all">

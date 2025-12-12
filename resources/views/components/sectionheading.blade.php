@@ -13,7 +13,7 @@
         </span>
     @endif
     
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight {{ $light ? 'text-white' : 'text-[#0a1a3f]' }}">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight {{ $light ? 'text-white' : 'text-[#0a1a3f]' }}"@if($light) style="color: #ffffff !important;"@endif>
         {{ $title }}
     </h2>
     
