@@ -6,23 +6,23 @@
             <div class="flex items-center justify-between text-sm">
                 <div class="flex items-center gap-6 lg:gap-8">
                     {{-- Phone --}}
-                    <a href="tel:+1234567890" class="flex items-center gap-2">
+                    <a href="tel:+225768120113" class="flex items-center gap-2">
                         <div class="w-8 h-8 rounded-full bg-[#0a1a3f] border border-white/20 flex items-center justify-center">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
                         </div>
-                        <span class="font-medium text-white">+1 (234) 567-890</span>
+                        <span class="font-medium text-white">+225 768 120 113</span>
                     </a>
                     
                     {{-- Email --}}
-                    <a href="mailto:info@afrixetrin.com" class="flex items-center gap-2">
+                    <a href="mailto:info@afrixetrin.co.tz" class="flex items-center gap-2">
                         <div class="w-8 h-8 rounded-full bg-[#0a1a3f] border border-white/20 flex items-center justify-center">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <span class="font-medium text-white">info@afrixetrin.com</span>
+                        <span class="font-medium text-white">info@afrixetrin.co.tz</span>
                     </a>
                 </div>
                 
@@ -63,7 +63,14 @@
                     @endphp
                     @foreach($navLinks as $link)
                         @php
-                            $isActive = request()->is(trim($link['route'], '/') . '*') || (trim($link['route'], '/') === '' && request()->is('/'));
+                            $route = trim($link['route'], '/');
+                            if ($route === '') {
+                                // For Home, only match exactly '/' or empty
+                                $isActive = request()->is('/') || request()->path() === '';
+                            } else {
+                                // For other routes, match exact route or sub-routes
+                                $isActive = request()->is($route) || request()->is($route . '/*');
+                            }
                         @endphp
                         <a
                             href="{{ url($link['route']) }}"
@@ -130,7 +137,14 @@
             <div class="px-6 py-4 space-y-1">
                 @foreach($navLinks as $link)
                     @php
-                        $isActive = request()->is(trim($link['route'], '/') . '*') || (trim($link['route'], '/') === '' && request()->is('/'));
+                        $route = trim($link['route'], '/');
+                        if ($route === '') {
+                            // For Home, only match exactly '/' or empty
+                            $isActive = request()->is('/') || request()->path() === '';
+                        } else {
+                            // For other routes, match exact route or sub-routes
+                            $isActive = request()->is($route) || request()->is($route . '/*');
+                        }
                     @endphp
                     <a
                         href="{{ url($link['route']) }}"
@@ -156,21 +170,21 @@
 
                 {{-- Mobile Contact Info --}}
                 <div class="pt-4 mt-4 border-t border-gray-100 space-y-3">
-                    <a href="tel:+1234567890" class="flex items-center gap-3 text-gray-600 hover:text-amber-600 transition-colors duration-200 text-sm">
+                    <a href="tel:+225768120113" class="flex items-center gap-3 text-gray-600 hover:text-amber-600 transition-colors duration-200 text-sm">
                         <div class="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
                         </div>
-                        <span class="font-medium">+1 (234) 567-890</span>
+                        <span class="font-medium">+225 768 120 113</span>
                     </a>
-                    <a href="mailto:info@afrixetrin.com" class="flex items-center gap-3 text-gray-600 hover:text-amber-600 transition-colors duration-200 text-sm">
+                    <a href="mailto:info@afrixetrin.co.tz" class="flex items-center gap-3 text-gray-600 hover:text-amber-600 transition-colors duration-200 text-sm">
                         <div class="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <span class="font-medium">info@afrixetrin.com</span>
+                        <span class="font-medium">info@afrixetrin.co.tz</span>
                     </a>
                 </div>
             </div>
